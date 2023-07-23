@@ -1,7 +1,5 @@
 package wci.frontend;
 
-import java.util.Scanner;
-
 /**
  * <h1>Parser</h1>
  *
