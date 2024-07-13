@@ -24,17 +24,17 @@ public abstract class Parser
      * Constructor
      * @param scanner the scanner to be used with this parser
      */
-    protected Parser(Scanner scanner)
+    protected Parser (Scanner scanner)
     {
         this.scanner = scanner;
         this.iCode = null;
     }
 
     /**
-     * Parse a source program and generate the intermediate code and the
+     * Parse a source program and generated the intermediate code and the
      * symbol table. To be implemented by a language-specific parser
      * subclass
-     * @throws Exception id an error occured
+     * @throws Exception id an error occurred
      */
     public abstract void parse()
         throws Exception;
@@ -55,6 +55,11 @@ public abstract class Parser
         return scanner.currentToken();
     }
 
+    /**
+     * Call the scanner's nextToken() method.
+     * @return the next token
+     * @throws Exception if an error occurred
+     */
     public Token nextToken()
         throws Exception
     {

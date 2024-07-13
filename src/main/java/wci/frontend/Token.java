@@ -52,7 +52,7 @@ public class Token {
     /**
      * Call the source's nextChar() method.
      * @return the next character from the source after moving forward
-     * @throws Exception if an error occured.
+     * @throws Exception if an error occurred.
      */
     protected char nextChar() throws Exception {
         return source.nextChar();

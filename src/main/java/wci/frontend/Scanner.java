@@ -28,7 +28,7 @@ public abstract class Scanner {
     /**
      * Return next token from the source
      * @return the next token
-     * @throws Exception if an error occured
+     * @throws Exception if an error occurred
      */
     public Token nextToken() throws Exception {
         currentToken = extractToken();
@@ -55,7 +55,7 @@ public abstract class Scanner {
     /**
      * Call the source's nextChar() method.
      * @return the next character from the source.
-     * @throws Exception if an error occured.
+     * @throws Exception if an error occurred.
      */
     public char nextChar() throws Exception {
         return source.nextChar();
