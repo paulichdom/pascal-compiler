@@ -5,6 +5,9 @@ import wci.message.MessageProducer;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+import wci.message.*;
+import static wci.message.MessageType.SOURCE_LINE;
+
 /**
  * <h1>Source</h1>
  *
@@ -20,6 +23,8 @@ public class Source implements MessageProducer
     private int lineNum; // current source line number
     private int currentPos; // current source line position
 
+    private MessageHandler messageHandler;    // delegate to handle messages
+
     /**
      * Constructor.
      * @param reader the reader for the source program
@@ -29,6 +34,7 @@ public class Source implements MessageProducer
         this.lineNum = 0;
         this.currentPos = -2;  // set to -2 to read the first source line
         this.reader = reader;
+        this.messageHandler = new MessageHandler();
     }
 
     public char currentChar() throws Exception {
@@ -122,18 +128,27 @@ public class Source implements MessageProducer
         }
     }
 
-    @Override
+    /**
+     * Add a parser message listener.
+     * @param listener the message listener to add.
+     */
     public void addMessageListener(MessageListener listener) {
-
+        messageHandler.addListener(listener);
     }
 
-    @Override
+    /**
+     * Remove a parser message listener.
+     * @param listener the message listener to remove.
+     */
     public void removeMessageListener(MessageListener listener) {
-
+        messageHandler.removeListener(listener);
     }
 
-    @Override
+    /**
+     * Notify listeners after setting the message.
+     * @param message the message to set.
+     */
     public void sendMessage(Message message) {
-
+        messageHandler.sendMessage(message);
     }
 }
