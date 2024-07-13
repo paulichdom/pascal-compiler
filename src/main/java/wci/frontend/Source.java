@@ -1,5 +1,7 @@
 package wci.frontend;
 
+import wci.message.MessageProducer;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -8,7 +10,8 @@ import java.io.IOException;
  *
  * <p>The framework class that represents the source program.</p>
  */
-public class Source {
+public class Source implements MessageProducer
+{
     public static final char EOL = '\n'; // end-of-line
     public static final char EOF = (char) 0; // end-of-file
 
@@ -87,12 +90,20 @@ public class Source {
      * Read the next source line.
      * @throws IOException if an I/O error occurred.
      */
-    private void readLine() throws IOException {
+    private void readLine()
+        throws IOException
+    {
         line = reader.readLine(); // null when at the end of the source
         currentPos = -1;
 
         if(line != null) {
             ++lineNum;
+        }
+
+        // Send a source line message containing the line number
+        // and the line text to all the listeners
+        if(line != null) {
+            sendMessage(new Message(SOURCE_LINE, new Object[] {lineNum, line}));
         }
     }
 
@@ -109,5 +120,20 @@ public class Source {
                 throw ex;
             }
         }
+    }
+
+    @Override
+    public void addMessageListener(MessageListener listener) {
+
+    }
+
+    @Override
+    public void removeMessageListener(MessageListener listener) {
+
+    }
+
+    @Override
+    public void sendMessage(Message message) {
+
     }
 }
