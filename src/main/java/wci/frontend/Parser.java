@@ -2,6 +2,9 @@ package wci.frontend;
 
 import wci.intermediate.ICode;
 import wci.intermediate.SymTab;
+import wci.message.Message;
+import wci.message.MessageHandler;
+import wci.message.MessageListener;
 import wci.message.MessageProducer;
 
 /**
