@@ -37,6 +37,23 @@ public class Source implements MessageProducer
         this.messageHandler = new MessageHandler();
     }
 
+    /**
+     * Getter.
+     * @return the current source line number.
+     */
+    public int getLineNum() {
+        return lineNum;
+    }
+
+    /**
+     * Getter.
+     * @return the position of the next source character in the
+     * current source line.
+     */
+    public int getPosition() {
+        return currentPos;
+    }
+
     public char currentChar() throws Exception {
         // First time?
         if(currentPos == -2) {
