@@ -27,6 +27,46 @@ public class Token {
     }
 
     /**
+     * Getter
+     * @return the token type
+     */
+    public TokenType getType() {
+        return type;
+    }
+
+    /**
+     * Getter.
+     * @return the token text.
+     */
+    public String getText() {
+        return text;
+    }
+
+    /**
+     * Getter.
+     * @return the token value.
+     */
+    public Object getValue() {
+        return value;
+    }
+
+    /**
+     * Getter.
+     * @return the source line number.
+     */
+    public int getLineNumber() {
+        return lineNum;
+    }
+
+    /**
+     * Getter.
+     * @return the position.
+     */
+    public int getPosition() {
+        return position;
+    }
+
+    /**
      * Default method to extract only one-character tokens from the source.
      * Subclasses can override this method to construct language-specific
      * tokens. After extracting the token, the current source line position
